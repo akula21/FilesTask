@@ -4,9 +4,9 @@ const path = require('path')
 
 
 let mergedArrays = []
-
+                                            // 2kk_words_400x400
     for (let i = 0; i < 20; i++) {
-        let read = fs.readFileSync(`./200k_words_100x100/out${i}.txt`, 'utf8').split('\n')
+        let read = fs.readFileSync(`./2kk_words_400x400/out${i}.txt`, 'utf8').split('\n')
         mergedArrays.push(read)
     }
 
@@ -19,23 +19,23 @@ let mergedArrays = []
 // let array = ['lol', 'lol', 'lol',  'lal', 'lel', 'lel', 'lul', 'lil', 'lyl', 'lol', 'lyl', 'lil', 'trf', 'lil', 'kek'];
 
     // let array = ['John', 'Pete', 'Mary', 'John', 'Mary', 'Mary']
-
-function uniq(a) {
-    // create a map from value -> count(value)
-    let counts = a.reduce(function (o, k) {
-        o[k] = o[k] ? o[k] + 1 : 1;
-        return o;
-    }, {});
-
-    // find those that only appeared once
-    return Object.keys(counts).filter(function (k) {
-        return (counts[k] === 1);
-    });
-}
-
-console.log(
-    uniq(finalArray)
-)
+//
+// function uniq(a) {
+//     // create a map from value -> count(value)
+//     let counts = a.reduce(function (o, k) {
+//         o[k] = o[k] ? o[k] + 1 : 1;
+//         return o;
+//     }, {});
+//
+//     // find those that only appeared once
+//     return Object.keys(counts).filter(function (k) {
+//         return (counts[k] === 1);
+//     });
+// }
+//
+// console.log(
+//     uniq(finalArray)
+// )
 
 //
 function uniqueValues() {
@@ -56,9 +56,9 @@ function uniqueValues() {
     console.log(set)
     console.log(arr)
 
-let doubles = [...new Set(arr)]
-
-console.log(doubles)
+// let doubles = [...new Set(arr)]
+//
+// console.log(doubles)
 }
 
 
