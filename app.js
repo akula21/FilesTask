@@ -1,25 +1,133 @@
 const fs = require('fs')
-const path = require('path')
 
+//                                                  200k_words_100x100
+//                                             // 2kk_words_400x400
 
 
 let mergedArrays = []
-                                            // 2kk_words_400x400
+
+let unifiedArray = []
+
     for (let i = 0; i < 20; i++) {
         let read = fs.readFileSync(`./2kk_words_400x400/out${i}.txt`, 'utf8').split('\n')
         mergedArrays.push(read)
+        unifiedArray = [...unifiedArray, ...read]        // merges words in one arr
     }
 
-    // console.log(mergedArrays)               // [ [] [] []]
 
-    let finalArray = mergedArrays.flat()
-    // console.log(finalArray)           // [ , , , ]
+
+
+function uniqueValues() {
+        let uniqueSetArr = [...new Set(mergedArrays.flat())];
+    console.log(uniqueSetArr);
+}
+
+
+function existInAtLeastTen() {
+    let uniqueSetArr = [...new Set(mergedArrays.flat())];
+    let uniqueArr = mergedArrays.map(value => [...new Set(value)]);
+
+    let a = []
+    uniqueArr.forEach(val => {
+        let c = new Set(val)
+        a.push(c)
+    })
+    let allFiles = []
+    let moreThanTenFiles = []
+    uniqueSetArr.forEach(val => {
+        let count = 0
+    a.forEach(value => {
+            if(value.has(val)) count++
+        })
+         if(count === 20) allFiles.push(val)
+         if(count >= 10) moreThanTenFiles.push(val)
+    })
+    console.log(allFiles)
+    console.log(moreThanTenFiles)
+
+}
+
+function uniqueValuesInAll() {
+    let arr = []
+    let set = new Set()
+    let firstSize = set.size
+
+    unifiedArray.forEach(value => {
+        set.add(value)
+        if (firstSize === set.size) arr.push(value)
+        firstSize = set.size
+    })
+    arr.forEach(value => {
+        set.delete(value)
+    })
+
+    console.log(set)
+}
+
+uniqueValues()
+// existInAllFiles()
+existInAtLeastTen()
+uniqueValuesInAll()
+
+
+//
+//
+//
+//     let arrRight = []
+//
+//     uniqueSet.forEach(valueU => {
+//         let b = 0
+//         settedMergeArraysLol.forEach(valueM => {
+//             valueM.forEach(valueMW => {
+//                 if (valueMW === valueU) {
+//                     b++
+//                 }
+//             })
+//         })
+//         console.log(b)
+//         if(b >= 10) arrRight.push(valueU)
+//         console.log(arrRight)
+//     })
+//
+// console.log(arrRight)
+
+
+// test
+
+// let arr = [1, 3, 5, 6, 7, 8, 9]
+// let arr2 = [9, 3, 11, 6, 15, 18, 15]
+//
+// let arr3  = [[2, 5, 4, 5], [11, 76, 5], [36, 75, 5], [14, 6]]
+//
+// let arrRight = []
+//
+// arr.forEach((value) => {
+//     let b = 0
+//     arr3.forEach((value1) => {
+//         value1.forEach((value2) => {
+//             if (value === value2){
+//                 b++
+//                 console.log(b)
+//                 arrRight.push(value)
+//             }
+//         })
+//     })
+// })
+//
+//         console.log(arrRight)
 
 //                                       1                     2                                         3           4
 // let array = ['lol', 'lol', 'lol',  'lal', 'lel', 'lel', 'lul', 'lil', 'lyl', 'lol', 'lyl', 'lil', 'trf', 'lil', 'kek'];
 
-    // let array = ['John', 'Pete', 'Mary', 'John', 'Mary', 'Mary']
+// let array = ['John', 'Pete', 'Mary', 'John', 'Mary', 'Mary']
+// //
+// let set = new Set(array)
 //
+// console.log(set)
+//
+// set.forEach((value, value2, set1) => {
+//     console.log(value +value2)
+// })
 // function uniq(a) {
 //     // create a map from value -> count(value)
 //     let counts = a.reduce(function (o, k) {
@@ -37,47 +145,58 @@ let mergedArrays = []
 //     uniq(finalArray)
 // )
 
+// let newSet = new Set(arrRight)
+// console.log(arrRight)
+
+// for (let i = 0; i < arr.length; i++) {
+//     for (let j = 0; j < arr3.length; j++) {
+//             // if (arr[i] === arr2[j]) {
+//             //     arrRight.push(arr[i])
+//             // }
+//         for (let k = 0; k < arr3[j].length; k++) {
+//             if (arr[i] === arr3[j][k]){
+//                 arrRight.push(arr[i])
+//             }
+//         }
+//     }
+// }
+
+
+// arr.forEach((value, index, array) => {
+//     console.log(value, index, array)
+// })
+
+// arr.forEach((value, index, array) => {
+//     arr2.forEach((value1, index1, array1) => {
+//         if (value === value1) {
+//             arrRight.push(value)
+//         }
+//     })
+// })
+
+
+
+
+
+
+// let arr = []
+// let set = new Set()
+// let firstSize = set.size
 //
-function uniqueValues() {
-    let arr = []
-    let set = new Set()
-    let firstSize = set.size
-
-    finalArray.forEach(value => {
-        set.add(value)
-        if (firstSize === set.size) arr.push(value)
-        firstSize = set.size
-    })
-
-    arr.forEach(value => {
-        set.delete(value)
-    })
-
-    console.log(set)
-    console.log(arr)
-
-// let doubles = [...new Set(arr)]
+// finalArray.forEach(value => {
+//     set.add(value)
+//     if (firstSize === set.size) arr.push(value)
+//     firstSize = set.size
+// })
 //
-// console.log(doubles)
-}
+// arr.forEach(value => {
+//     set.delete(value)
+// })
+//
+// console.log(set)
+// console.log(arr)
 
 
-function existInAllFiles() {
-
-
-
-
-
-
-}
-
-
-function existInAtLeastTen() {
-
-}
-
-uniqueValues()      // no values that appears once???!!!!!!!!!!!!
-// existInAllFiles()
 
 
 
