@@ -15,11 +15,11 @@ let unifiedArray = []
     }
 
 
-
+// Unique Values
 
 function uniqueValues() {
         let uniqueSetArr = [...new Set(mergedArrays.flat())];
-    console.log(uniqueSetArr);
+    console.log(uniqueSetArr.length);
 }
 
 
@@ -42,8 +42,8 @@ function existInAtLeastTen() {
          if(count === 20) allFiles.push(val)
          if(count >= 10) moreThanTenFiles.push(val)
     })
-    console.log(allFiles)
-    console.log(moreThanTenFiles)
+    console.log(allFiles.length)
+    console.log(moreThanTenFiles.length)
 
 }
 
@@ -61,7 +61,7 @@ function uniqueValuesInAll() {
         set.delete(value)
     })
 
-    console.log(set)
+    console.log(set.size)
 }
 
 uniqueValues()
